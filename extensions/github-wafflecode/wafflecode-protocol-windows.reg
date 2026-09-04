@@ -1,0 +1,15 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\wafflecode]
+@="URL:WaffleCode Protocol"
+"URL Protocol"=""
+
+[HKEY_CLASSES_ROOT\wafflecode\DefaultIcon]
+@="\"C:\\Users\\user\\Desktop\\WaffleOS\\WaffleCode\\packages\\app\\public\\favicon.ico\",0"
+
+[HKEY_CLASSES_ROOT\wafflecode\shell]
+
+[HKEY_CLASSES_ROOT\wafflecode\shell\open]
+
+[HKEY_CLASSES_ROOT\wafflecode\shell\open\command]
+@="\"C:\\Users\\user\\.bun\\bin\\bun.exe\" \"C:\\Users\\user\\Desktop\\WaffleOS\\WaffleCode\\packages\\desktop\\src\\main\\index.ts\" \"%1\""

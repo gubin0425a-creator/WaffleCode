@@ -86,8 +86,8 @@ const getBase = (appId: string): Configuration => ({
     sign: true,
   },
   protocols: {
-    name: "OpenCode",
-    schemes: ["opencode"],
+    name: "WaffleCode",
+    schemes: ["wafflecode", "opencode"],
   },
   win: {
     icon: `resources/icons/icon.ico`,

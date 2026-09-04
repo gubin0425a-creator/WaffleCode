@@ -7,6 +7,15 @@
 > **바삭하게 구워내는 AI 코딩 에이전트 & 실시간 스튜디오 프리뷰**  
 > AI Studio 스타일의 실시간 미리보기(Live Preview) 기능과 Codex 스타일의 워크 스트림이 결합된 차세대 AI 코딩 도구입니다.
 
+<p align="center">
+  <a href="wafflecode://clone?url=https://github.com/gubin0425a-creator/WaffleCode.git">
+    <img src="https://img.shields.io/badge/🧇%20Open%20in-WaffleCode-f54e00?style=for-the-badge" alt="Open in WaffleCode" />
+  </a>
+  <a href="./landing/index.html">
+    <img src="https://img.shields.io/badge/🌐%20공식-랜딩페이지-26251e?style=for-the-badge" alt="Official Landing Page" />
+  </a>
+</p>
+
 ---
 
 ### ⚠️ 법적 면책 조항 및 책임의 한계 (Disclaimer of Liability)

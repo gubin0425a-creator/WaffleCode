@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "WaffleCode for GitHub - 와플코드로 열기",
+  "version": "1.0.0",
+  "description": "GitHub 저장소의 <> Code 메뉴에 '와플코드로 열기 (Open in WaffleCode)' 버튼을 추가합니다.",
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "128": "waffle-icon.png"
+  }
+}
