@@ -36,22 +36,17 @@ const channel = (() => {
 })()
 
 const APP_IDS = {
-  dev: "ai.opencode.desktop.dev",
-  beta: "ai.opencode.desktop.beta",
-  prod: "ai.opencode.desktop",
+  dev: "dev.wafflecode.desktop",
+  beta: "beta.wafflecode.desktop",
+  prod: "ai.wafflecode.desktop",
 } as const
 
 const getBase = (appId: string): Configuration => ({
-  artifactName: "opencode-desktop-${os}-${arch}.${ext}",
+  artifactName: "WaffleCode-${version}-${os}-${arch}.${ext}",
   directories: {
     output: "dist",
     buildResources: "resources",
   },
-  // Linux launchers are .desktop files, so this is the desktop file name,
-  // not just the app id. For prod, app id "ai.opencode.desktop" becomes
-  // "ai.opencode.desktop.desktop".
-  // https://developer.gnome.org/documentation/guidelines/maintainer/integrating.html
-  // https://www.electron.build/docs/linux/
   extraMetadata: {
     desktopName: `${appId}.desktop`,
   },
@@ -66,11 +61,6 @@ const getBase = (appId: string): Configuration => ({
           },
         ]
       : []),
-    {
-      from: "native/",
-      to: "native/",
-      filter: ["index.js", "index.d.ts", "build/Release/mac_window.node", "swift-build/**"],
-    },
   ],
   mac: {
     category: "public.app-category.developer-tools",
@@ -79,11 +69,12 @@ const getBase = (appId: string): Configuration => ({
     gatekeeperAssess: false,
     entitlements: "resources/entitlements.plist",
     entitlementsInherit: "resources/entitlements.plist",
-    notarize: true,
+    notarize: false,
+    artifactName: "WaffleCode-${version}.${ext}",
     target: ["dmg", "zip"],
   },
   dmg: {
-    sign: true,
+    sign: false,
   },
   protocols: {
     name: "WaffleCode",
@@ -91,9 +82,7 @@ const getBase = (appId: string): Configuration => ({
   },
   win: {
     icon: `resources/icons/icon.ico`,
-    signtoolOptions: {
-      sign: signWindows,
-    },
+    artifactName: "WaffleCode-Setup-${version}.${ext}",
     target: ["nsis"],
     verifyUpdateCodeSignature: false,
   },
@@ -106,15 +95,14 @@ const getBase = (appId: string): Configuration => ({
   linux: {
     icon: `resources/icons`,
     category: "Development",
-    executableName: appId,
+    executableName: "wafflecode",
     desktop: {
       entry: {
-        // Match the installed .desktop file and hicolor icon basename so
-        // Linux shells can associate the running Electron window with its launcher.
         StartupWMClass: appId,
       },
     },
-    target: ["AppImage", "deb", "rpm"],
+    artifactName: "WaffleCode-${version}.${ext}",
+    target: ["AppImage", "deb"],
   },
 })
 
@@ -127,31 +115,31 @@ function getConfig() {
       return {
         ...base,
         appId,
-        productName: "OpenCode Dev",
+        productName: "WaffleCode Dev",
         deb: { fpm: [metainfoFpm(appId)] },
-        rpm: { packageName: "opencode-dev", fpm: [metainfoFpm(appId)] },
+        rpm: { packageName: "wafflecode-dev", fpm: [metainfoFpm(appId)] },
       }
     }
     case "beta": {
       return {
         ...base,
         appId,
-        productName: "OpenCode Beta",
-        protocols: { name: "OpenCode Beta", schemes: ["opencode"] },
-        publish: { provider: "github", owner: "anomalyco", repo: "opencode-beta", channel: "latest" },
+        productName: "WaffleCode Beta",
+        protocols: { name: "WaffleCode Beta", schemes: ["wafflecode"] },
+        publish: { provider: "github", owner: "gubin0425a-creator", repo: "WaffleCode", channel: "latest" },
         deb: { fpm: [metainfoFpm(appId)] },
-        rpm: { packageName: "opencode-beta", fpm: [metainfoFpm(appId)] },
+        rpm: { packageName: "wafflecode-beta", fpm: [metainfoFpm(appId)] },
       }
     }
     case "prod": {
       return {
         ...base,
         appId,
-        productName: "OpenCode",
-        protocols: { name: "OpenCode", schemes: ["opencode"] },
-        publish: { provider: "github", owner: "anomalyco", repo: "opencode", channel: "latest" },
-        deb: { fpm: [metainfoFpm(appId), legacyDesktopEntryFpm] },
-        rpm: { packageName: "opencode", fpm: [metainfoFpm(appId), legacyDesktopEntryFpm] },
+        productName: "WaffleCode",
+        protocols: { name: "WaffleCode", schemes: ["wafflecode"] },
+        publish: { provider: "github", owner: "gubin0425a-creator", repo: "WaffleCode", channel: "latest" },
+        deb: { fpm: [metainfoFpm(appId)] },
+        rpm: { packageName: "wafflecode", fpm: [metainfoFpm(appId)] },
       }
     }
   }

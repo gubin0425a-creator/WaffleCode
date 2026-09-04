@@ -1,13 +1,13 @@
 {
-  "name": "@opencode-ai/desktop",
+  "name": "@wafflecode/desktop",
   "private": true,
-  "version": "1.18.27",
+  "version": "1.0.0",
   "type": "module",
   "license": "MIT",
-  "homepage": "https://opencode.ai",
+  "homepage": "https://gubin0425a-creator.github.io/WaffleCode/",
   "author": {
-    "name": "OpenCode",
-    "email": "hello@opencode.ai"
+    "name": "WaffleCode",
+    "email": "wafflecode@example.com"
   },
   "scripts": {
     "typecheck": "tsgo -b",
