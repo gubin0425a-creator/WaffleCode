@@ -912,20 +912,34 @@
           <p class="body-md" style="margin-bottom: 16px;">
             VS Code(<code>vscode://</code>), Cursor(<code>cursor://</code>), GitHub Desktop(<code>x-github-client://</code>)과 완벽히 동일한 방식으로 <strong><code>wafflecode://</code></strong> 공식 프로토콜을 사용합니다.
           </p>
-          <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; color: var(--colors-body);">
-            <li><strong>저작권 및 법적 문제 0%:</strong> GitHub 웹 규격을 침해하지 않는 표준 클라이언트 확장 및 OS 프로토콜 방식.</li>
-            <li><strong>크롬/엣지 확장 프로그램 제공:</strong> GitHub 웹페이지 <code>&lt;&gt; Code</code> 드롭다운에 &lsquo;와플코드로 열기&rsquo; 항목 자동 추가.</li>
-            <li><strong>Tampermonkey 유저스크립트 지원:</strong> 확장 프로그램 설치 없이도 5초 만에 원클릭 적용 가능.</li>
-            <li><strong>README 원클릭 배지:</strong> 저장소 문서에 배지를 달아 방문자 누구나 와플코드로 열기 지원.</li>
-          </ul>
 
-          <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="https://github.com/gubin0425a-creator/WaffleCode/tree/main/extensions/github-wafflecode" target="_blank" class="button-primary">
-              <span>확장 프로그램 / 스크립트 받기</span>
-            </a>
-            <button onclick="copyBadgeCode()" class="button-secondary">
+          <!-- Explicit Explanation Box: Why extensions are NOT mandatory -->
+          <div style="background-color: var(--colors-canvas); border: 1px solid var(--colors-hairline); border-radius: var(--rounded-md); padding: 18px; margin-bottom: 20px;">
+            <div style="font-weight: 600; font-size: 14px; color: var(--colors-ink); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+              <span>💡</span>
+              <span>확장 프로그램을 꼭 깔아야 하나요? (심사 기간/설치 번거로움 해결)</span>
+            </div>
+            <p style="font-size: 13px; color: var(--colors-body); line-height: 1.6; margin-bottom: 10px;">
+              <strong>전혀 필수가 아닙니다!</strong> GitHub 본사 사이트의 <code>&lt;&gt; Code</code> 드롭다운 메뉴 <em>'내부'</em>에 글자를 끼워 넣으려면 브라우저 확장이 필요하지만, <strong>WaffleCode 프로그램만 설치하면 PC에 프로토콜이 자동 등록</strong>되므로 아래 방법들로 확장 프로그램 없이도 1초 만에 즉시 열 수 있습니다:
+            </p>
+            <ul style="padding-left: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--colors-body);">
+              <li><strong>① README 원클릭 배지 (가장 추천):</strong> 저장소 문서의 배지를 누르면 확장 프로그램 없이도 컴퓨터의 WaffleCode가 즉시 실행됩니다.</li>
+              <li><strong>② 북마클릿 (심사/설치 0초):</strong> 아래 [⭐ 북마클릿] 버튼을 브라우저 북마크 바에 끌어다 놓으면, 어떤 GitHub 페이지에서든 클릭 한 번으로 즉시 열립니다.</li>
+              <li><strong>③ URL 붙여넣기:</strong> GitHub 주소 복사 후 WaffleCode에서 바로 열기.</li>
+              <li><strong>④ 크롬/엣지 확장 프로그램 (선택 사항):</strong> <code>&lt;&gt; Code</code> 메뉴 안에 버튼을 꼭 넣고 싶은 분들을 위한 보조 옵션입니다.</li>
+            </ul>
+          </div>
+
+          <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+            <button onclick="copyBadgeCode()" class="button-primary">
               <span id="badge-copy-text">README 뱃지 마크다운 복사</span>
             </button>
+            <a href="javascript:(function(){location.href='wafflecode://clone?url='+encodeURIComponent(location.href);})();" class="button-secondary" onclick="alert('이 버튼을 브라우저의 [북마크 바(즐겨찾기)]로 마우스 드래그해 놓으시면, 어떤 깃허브 저장소에서든 북마크를 누르는 즉시 와플코드로 열립니다!'); return false;" title="북마크 바(즐겨찾기)로 드래그하세요">
+              <span>⭐ 🧇 와플코드로 열기 (북마클릿)</span>
+            </a>
+            <a href="https://github.com/gubin0425a-creator/WaffleCode/tree/main/extensions/github-wafflecode" target="_blank" class="button-secondary" style="font-size: 12px; color: var(--colors-muted);">
+              <span>선택형 확장 프로그램 받기 →</span>
+            </a>
           </div>
         </div>
 

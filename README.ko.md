@@ -42,6 +42,18 @@
    - 모바일, 태블릿, 데스크톱 반응형 뷰포트 지원 및 실시간 핫 리로드
 
 ---
+
+### 🌐 GitHub에서 '와플코드로 열기' (확장 프로그램 불필요!)
+
+> **Q. 브라우저 확장 프로그램을 꼭 깔아야 하나요? 심사 기간이나 별도 설치가 번거롭지 않나요?**  
+> **A. 전혀 필수가 아닙니다!** WaffleCode 인스톨러(`WaffleCode-Setup.exe`)를 설치하면 윈도우/OS에 `wafflecode://` 프로토콜이 자동 등록되므로, **프로그램 설치만으로도 즉시 사용**할 수 있습니다.
+
+* **방법 ① README 원클릭 배지 (가장 추천):** 저장소 상단의 `[Open in WaffleCode]` 배지를 누르면 내 컴퓨터의 WaffleCode가 즉시 실행됩니다. (확장 프로그램 0% 불필요)
+* **방법 ② 브라우저 북마클릿 (심사/설치 0초):** [공식 랜딩페이지](https://gubin0425a-creator.github.io/WaffleCode/#github-integration)에서 북마클릿을 즐겨찾기 바에 넣어두면, 어떤 GitHub 페이지에서든 클릭 한 번으로 열립니다.
+* **방법 ③ URL 붙여넣기:** GitHub 주소 복사 후 WaffleCode에서 바로 열기.
+* **방법 ④ 브라우저 확장 프로그램 (선택 사항):** GitHub 웹페이지의 `<> Code` 드롭다운 메뉴 *'내부'*에 버튼을 시각적으로 꼭 넣고 싶은 분들을 위한 보조 옵션입니다. (자세한 내용은 `extensions/github-wafflecode` 참조)
+
+---
 <p align="center">
   <a href="https://github.com/gubin0425a-creator/WaffleCode/releases"><img alt="GitHub Release" src="https://img.shields.io/badge/Release-v1.0.0-f54e00?style=flat-square" /></a>
   <a href="https://github.com/gubin0425a-creator/WaffleCode/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" /></a>
