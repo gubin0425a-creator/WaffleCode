@@ -171,10 +171,38 @@ namespace WaffleCodeInstaller
         {
             try
             {
-                UpdateStatus("설치 디렉터리 구성 중...");
+                UpdateStatus("설치 파일 추출 및 배포 중...");
                 string localApp = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
                 string installDir = Path.Combine(localApp, "Programs", "WaffleCode");
                 if (!Directory.Exists(installDir)) Directory.CreateDirectory(installDir);
+
+                string targetExe = Path.Combine(installDir, "WaffleCode.exe");
+                string targetIco = Path.Combine(installDir, "icon.ico");
+
+                try
+                {
+                    using (Stream s = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("WaffleCode.exe"))
+                    {
+                        if (s != null)
+                        {
+                            using (FileStream fs = new FileStream(targetExe, FileMode.Create))
+                            {
+                                s.CopyTo(fs);
+                            }
+                        }
+                    }
+                    using (Stream s = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("icon.ico"))
+                    {
+                        if (s != null)
+                        {
+                            using (FileStream fs = new FileStream(targetIco, FileMode.Create))
+                            {
+                                s.CopyTo(fs);
+                            }
+                        }
+                    }
+                }
+                catch { }
 
                 Thread.Sleep(500);
 
@@ -199,12 +227,16 @@ namespace WaffleCodeInstaller
                 {
                     progressBar.Style = ProgressBarStyle.Continuous;
                     progressBar.Value = 100;
-                    btnInstall.Text = "설치 완료 및 닫기";
+                    btnInstall.Text = "WaffleCode 실행하기";
                     btnInstall.BackColor = Color.FromArgb(46, 125, 50);
                     btnInstall.Enabled = true;
                     btnInstall.Click -= StartInstallation;
-                    btnInstall.Click += (s, e) => { this.Close(); };
-                    MessageBox.Show("WaffleCode v1.0.0 설치가 완료되었습니다!\n\nGitHub 저장소에서 '와플코드로 열기'를 사용하실 수 있습니다.", "설치 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnInstall.Click += (s, e) =>
+                    {
+                        try { System.Diagnostics.Process.Start(targetExe); } catch { }
+                        this.Close();
+                    };
+                    MessageBox.Show("WaffleCode v1.0.0 설치가 완료되었습니다!\n\n바탕화면에 'WaffleCode' 바로가기가 생성되었습니다.", "설치 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 });
             }
             catch (Exception ex)
@@ -244,17 +276,20 @@ namespace WaffleCodeInstaller
         private void CreateShortcuts(string installDir)
         {
             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-            string vbs = Path.Combine(Path.GetTempPath(), "create_shortcut.vbs");
+            string startMenu = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu), "Programs");
             string appPath = Path.Combine(installDir, "WaffleCode.exe");
 
             string script = string.Format(
                 "Set oWS = WScript.CreateObject(\"WScript.Shell\")\r\n" +
                 "Set oLink = oWS.CreateShortcut(\"{0}\")\r\n" +
                 "oLink.TargetPath = \"{1}\"\r\n" +
+                "oLink.WorkingDirectory = \"{2}\"\r\n" +
+                "oLink.IconLocation = \"{1},0\"\r\n" +
                 "oLink.Description = \"WaffleCode AI Coding Assistant\"\r\n" +
                 "oLink.Save\r\n",
-                Path.Combine(desktop, "WaffleCode.lnk"), appPath);
+                Path.Combine(desktop, "WaffleCode.lnk"), appPath, installDir);
 
+            string vbs = Path.Combine(Path.GetTempPath(), "create_shortcut.vbs");
             File.WriteAllText(vbs, script);
             try
             {
