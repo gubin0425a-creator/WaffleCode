@@ -11,7 +11,7 @@
   <a href="wafflecode://clone?url=https://github.com/gubin0425a-creator/WaffleCode.git">
     <img src="https://img.shields.io/badge/🧇%20Open%20in-WaffleCode-f54e00?style=for-the-badge" alt="Open in WaffleCode" />
   </a>
-  <a href="./landing/index.html">
+  <a href="https://gubin0425a-creator.github.io/WaffleCode/">
     <img src="https://img.shields.io/badge/🌐%20공식-랜딩페이지-26251e?style=for-the-badge" alt="Official Landing Page" />
   </a>
 </p>
@@ -43,9 +43,9 @@
 
 ---
 <p align="center">
-  <a href="https://opencode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
-  <a href="https://www.npmjs.com/package/opencode-ai"><img alt="npm" src="https://img.shields.io/npm/v/opencode-ai?style=flat-square" /></a>
-  <a href="https://github.com/anomalyco/opencode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/opencode/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/gubin0425a-creator/WaffleCode/releases"><img alt="GitHub Release" src="https://img.shields.io/badge/Release-v1.0.0-f54e00?style=flat-square" /></a>
+  <a href="https://github.com/gubin0425a-creator/WaffleCode/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" /></a>
+  <a href="https://github.com/gubin0425a-creator/WaffleCode/raw/main/installer/WaffleCode-Setup-1.0.0.exe"><img alt="Download Windows" src="https://img.shields.io/badge/Download-Windows%20(.exe)-success?style=flat-square" /></a>
 </p>
 
 <p align="center">

@@ -754,7 +754,7 @@
   <!-- ── Top Navigation ───────────────────────────────────────────────── -->
   <header class="top-nav">
     <div class="container nav-container">
-      <a href="#" class="brand-wordmark">
+      <a href="https://gubin0425a-creator.github.io/WaffleCode/" class="brand-wordmark">
         <span class="waffle-badge">🧇</span>
         <span>WaffleCode</span>
       </a>
@@ -768,8 +768,8 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="https://github.com/gubin0425a-creator/WaffleCode/archive/refs/tags/v1.0.0.zip" class="button-primary">
-          <span>다운로드 v1.0.0</span>
+        <a href="#download" class="button-primary">
+          <span>다운로드 WaffleCode</span>
         </a>
       </div>
     </div>
@@ -792,8 +792,8 @@
       </p>
 
       <div class="hero-cta-group">
-        <a href="https://github.com/gubin0425a-creator/WaffleCode/archive/refs/tags/v1.0.0.zip" class="button-download">
-          <span>💻 Windows v1.0.0 다운로드 (ZIP)</span>
+        <a href="https://github.com/gubin0425a-creator/WaffleCode/raw/main/installer/WaffleCode-Setup-1.0.0.exe" class="button-download">
+          <span>💻 Windows 설치 파일 (.exe) 받기</span>
         </a>
         <a href="wafflecode://clone?url=https://github.com/gubin0425a-creator/WaffleCode" class="button-secondary">
           <span>🧇 와플코드로 열기 (One-Click)</span>
@@ -1066,7 +1066,7 @@
             <h3 class="title-md">Windows</h3>
             <p class="body-sm">Windows 10 / 11 (x64, ARM64)</p>
           </div>
-          <a href="https://github.com/gubin0425a-creator/WaffleCode/releases/download/v1.0.0/WaffleCode-Setup-1.0.0.exe" class="button-primary" style="width: 100%;">
+          <a href="https://github.com/gubin0425a-creator/WaffleCode/raw/main/installer/WaffleCode-Setup-1.0.0.exe" class="button-primary" style="width: 100%;">
             <span>설치 파일 다운로드 (.exe)</span>
           </a>
           <span class="code-text" style="color: var(--colors-muted); font-size: 11px;">Windows 10 / 11 (64-bit 설치형 인스톨러)</span>
@@ -1083,7 +1083,7 @@
           <a href="https://github.com/gubin0425a-creator/WaffleCode/releases/download/v1.0.0/WaffleCode-1.0.0.dmg" class="button-secondary" style="width: 100%;">
             <span>Universal DMG 다운로드 (.dmg)</span>
           </a>
-          <span class="code-text" style="color: var(--colors-muted); font-size: 11px;">Apple Silicon &amp; Intel 설치 이미지</span>
+          <span class="code-text" style="color: var(--colors-muted); font-size: 11px;">DMG 열기 후 Applications 폴더로 복사</span>
           <a href="https://github.com/gubin0425a-creator/WaffleCode/archive/refs/tags/v1.0.0.tar.gz" style="font-size: 11px; color: var(--colors-muted); text-decoration: underline; margin-top: 4px;">소스 아카이브 (tar.gz)</a>
         </div>
 
@@ -1097,7 +1097,7 @@
           <a href="https://github.com/gubin0425a-creator/WaffleCode/releases/download/v1.0.0/WaffleCode-1.0.0.AppImage" class="button-secondary" style="width: 100%;">
             <span>.AppImage 받기</span>
           </a>
-          <span class="code-text" style="color: var(--colors-muted); font-size: 11px;">CLI 및 TUI 모드 탑재</span>
+          <span class="code-text" style="color: var(--colors-muted); font-size: 11px;">Ubuntu, Debian, Fedora 실행 바이너리</span>
           <a href="https://github.com/gubin0425a-creator/WaffleCode/archive/refs/tags/v1.0.0.tar.gz" style="font-size: 11px; color: var(--colors-muted); text-decoration: underline; margin-top: 4px;">소스 아카이브 (tar.gz)</a>
         </div>
       </div>
@@ -1109,12 +1109,12 @@
       </div>
 
       <!-- Terminal Command Box -->
-      <div style="margin-top: 36px; max-width: 600px; margin-left: auto; margin-right: auto;">
-        <div style="background-color: var(--colors-surface-card); border: 1px solid var(--colors-hairline); border-radius: var(--rounded-md); padding: 14px 18px; display: flex; align-items: center; justify-content: space-between;">
-          <code class="code-text" style="color: var(--colors-ink);">
-            <span style="color: var(--colors-primary);">curl</span> -fsSL https://wafflecode.dev/install | bash
+      <div style="margin-top: 36px; max-width: 680px; margin-left: auto; margin-right: auto;">
+        <div style="background-color: var(--colors-surface-card); border: 1px solid var(--colors-hairline); border-radius: var(--rounded-md); padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+          <code class="code-text" style="color: var(--colors-ink); overflow-x: auto; white-space: nowrap;">
+            <span style="color: var(--colors-primary);">curl</span> -fsSL https://raw.githubusercontent.com/gubin0425a-creator/WaffleCode/main/install.sh | bash
           </code>
-          <button onclick="copyCommand()" class="button-secondary" style="height: 32px; font-size: 12px; padding: 0 12px;">
+          <button onclick="copyCommand()" class="button-secondary" style="height: 32px; font-size: 12px; padding: 0 12px; flex-shrink: 0;">
             <span id="cmd-copy-text">복사</span>
           </button>
         </div>
@@ -1133,7 +1133,7 @@
         <strong>개발자 및 기여자는 본 프로그램(WaffleCode)의 다운로드, 설치, 실행, 시스템 명령어 자율 수행, 원격 제어 및 수정·배포로 인해 발생하는 그 어떠한 직·간접적 손해, 데이터 유실, 시스템 장애, 금전적 손실, 보안 사고 및 제3자의 피해에 대해서도 어떠한 이유나 명목으로도 일체의 법적·도의적 책임을 지지 않습니다.</strong>
       </p>
       <p style="margin-top: 8px;">
-        에이전트에게 시스템 실행 권한을 부여하고 코드를 적용하는 모든 판단과 결과는 전적으로 사용자 본인의 책임입니다. 본 소프트웨어는 MIT 라이선스에 따라 "있는 그대로(AS-IS)" 제공되며, 자세한 내용은 <a href="DISCLAIMER.md" style="font-weight: 600; text-decoration: underline;">DISCLAIMER.md</a> 문서에서 확인하실 수 있습니다.
+        에이전트에게 시스템 실행 권한을 부여하고 코드를 적용하는 모든 판단과 결과는 전적으로 사용자 본인의 책임입니다. 본 소프트웨어는 MIT 라이선스에 따라 "있는 그대로(AS-IS)" 제공되며, 자세한 내용은 <a href="https://github.com/gubin0425a-creator/WaffleCode/blob/main/DISCLAIMER.md" target="_blank" style="font-weight: 600; text-decoration: underline;">DISCLAIMER.md</a> 문서에서 확인하실 수 있습니다.
       </p>
     </div>
   </section>
@@ -1150,7 +1150,7 @@
           바삭하게 구워내는 차세대 AI 코딩 환경. 에디토리얼 감성과 자율 에이전트의 결합.
         </p>
         <p class="code-text" style="color: var(--colors-muted); font-size: 12px; margin-top: 16px;">
-          © 2026 WaffleCode. Released under MIT License.
+          © 2026 WaffleCode Authors &amp; Contributors. Released under MIT License.
         </p>
       </div>
 
@@ -1167,19 +1167,19 @@
       <div class="footer-col">
         <h4>에이전트 &amp; 모델</h4>
         <ul>
-          <li><a href="#" class="footer-link">Opal 자율 에이전트</a></li>
-          <li><a href="#" class="footer-link">Gemini 2.5 Pro &amp; Flash</a></li>
-          <li><a href="#" class="footer-link">Waffle Vibe 코더</a></li>
-          <li><a href="#" class="footer-link">Deep Thinker</a></li>
+          <li><a href="#features" class="footer-link">Opal 자율 에이전트</a></li>
+          <li><a href="https://ai.google.dev/" target="_blank" class="footer-link">Gemini 2.5 Pro &amp; Flash</a></li>
+          <li><a href="#features" class="footer-link">Waffle Vibe 코더</a></li>
+          <li><a href="#features" class="footer-link">Codex 워크 스트림</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4>법적 고지</h4>
         <ul>
-          <li><a href="DISCLAIMER.md" class="footer-link">면책 조항 (Disclaimer)</a></li>
-          <li><a href="LICENSE" class="footer-link">MIT 오픈소스 라이선스</a></li>
-          <li><a href="README.md" class="footer-link">보안 및 정책</a></li>
+          <li><a href="https://github.com/gubin0425a-creator/WaffleCode/blob/main/DISCLAIMER.md" target="_blank" class="footer-link">면책 조항 (Disclaimer)</a></li>
+          <li><a href="https://github.com/gubin0425a-creator/WaffleCode/blob/main/LICENSE" target="_blank" class="footer-link">MIT 오픈소스 라이선스</a></li>
+          <li><a href="https://github.com/gubin0425a-creator/WaffleCode/blob/main/README.md" target="_blank" class="footer-link">보안 및 정책</a></li>
         </ul>
       </div>
 
@@ -1188,15 +1188,21 @@
         <ul>
           <li><a href="https://github.com/gubin0425a-creator/WaffleCode" target="_blank" class="footer-link">GitHub 저장소</a></li>
           <li><a href="https://github.com/gubin0425a-creator/WaffleCode/issues" target="_blank" class="footer-link">이슈 제보</a></li>
-          <li><a href="#" class="footer-link">디스코드 커뮤니티</a></li>
+          <li><a href="https://github.com/gubin0425a-creator/WaffleCode/discussions" target="_blank" class="footer-link">토론 &amp; 피드백</a></li>
         </ul>
+      </div>
+
+      <div style="grid-column: 1 / -1; border-top: 1px solid var(--colors-hairline); margin-top: 24px; padding-top: 24px;">
+        <p style="font-size: 11px; color: var(--colors-muted); line-height: 1.6;">
+          <strong>상표 및 법적 권리 고지:</strong> GitHub®, Visual Studio®, Cursor®, Google®, Gemini™ 등 본 웹사이트 및 프로그램에 언급된 모든 상표, 서비스표, 상호는 각 해당 소유자의 자산입니다. WaffleCode는 순수 오픈소스 프로젝트이며 이들 기업과 공식적인 제휴나 후원 관계가 없습니다. 본 프로그램의 자율 실행 권한 및 사용으로 발생하는 모든 결과에 대한 책임은 전적으로 사용자 본인에게 있습니다 (MIT License, AS-IS).
+        </p>
       </div>
     </div>
   </footer>
 
   <script>
     function copyCommand() {
-      const cmd = "curl -fsSL https://wafflecode.dev/install | bash";
+      const cmd = "curl -fsSL https://raw.githubusercontent.com/gubin0425a-creator/WaffleCode/main/install.sh | bash";
       navigator.clipboard.writeText(cmd);
       const el = document.getElementById("cmd-copy-text");
       if (el) {
