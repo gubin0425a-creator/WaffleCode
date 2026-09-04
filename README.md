@@ -8,7 +8,7 @@
 > AI Studio 스타일의 실시간 미리보기(Live Preview) 기능과 Codex 스타일의 워크 스트림이 결합된 차세대 AI 코딩 도구입니다.
 
 <p align="center">
-  <a href="wafflecode://clone?url=https://github.com/gubin0425a-creator/WaffleCode.git">
+  <a href="https://gubin0425a-creator.github.io/WaffleCode/open.html?url=https://github.com/gubin0425a-creator/WaffleCode.git">
     <img src="https://img.shields.io/badge/🧇%20Open%20in-WaffleCode-f54e00?style=for-the-badge" alt="Open in WaffleCode" />
   </a>
   <a href="https://gubin0425a-creator.github.io/WaffleCode/">

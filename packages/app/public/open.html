@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WaffleCode로 여는 중... (Opening in WaffleCode)</title>
+  <link rel="icon" type="image/png" href="packages/app/public/waffle-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --colors-primary: #f54e00;
+      --colors-primary-active: #d04200;
+      --colors-canvas: #f7f7f4;
+      --colors-surface: #ffffff;
+      --colors-hairline: #e6e5e0;
+      --colors-ink: #26251e;
+      --colors-body: #5a5852;
+      --colors-muted: #807d72;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--colors-canvas);
+      color: var(--colors-ink);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .launcher-card {
+      background-color: var(--colors-surface);
+      border: 1px solid var(--colors-hairline);
+      border-radius: 16px;
+      padding: 48px 40px;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .waffle-icon {
+      font-size: 56px;
+      line-height: 1;
+      margin-bottom: 20px;
+      display: inline-block;
+      animation: pulse 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: var(--colors-ink);
+    }
+
+    p {
+      font-size: 14px;
+      color: var(--colors-body);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .repo-badge {
+      background-color: var(--colors-canvas);
+      border: 1px solid var(--colors-hairline);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      color: var(--colors-ink);
+      word-break: break-all;
+      margin-bottom: 28px;
+    }
+
+    .notice-box {
+      background-color: #fff9f6;
+      border: 1px solid #fed7aa;
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 13px;
+      color: #9a3412;
+      text-align: left;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      background-color: var(--colors-primary);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      height: 44px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--colors-primary-active);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--colors-body);
+      border: 1px solid var(--colors-hairline);
+      border-radius: 8px;
+      height: 44px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--colors-canvas);
+      color: var(--colors-ink);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="launcher-card">
+    <div class="waffle-icon">🧇</div>
+    <h1>WaffleCode를 여는 중...</h1>
+    <p>
+      브라우저 상단에 표시되는 <strong>&lsquo;WaffleCode 열기&rsquo;</strong> 확인창을 눌러주세요.
+    </p>
+
+    <div id="repo-url-display" class="repo-badge">
+      https://github.com/gubin0425a-creator/WaffleCode.git
+    </div>
+
+    <div class="notice-box">
+      <strong>💡 확인창이 안 뜨나요?</strong><br />
+      컴퓨터에 WaffleCode가 설치되어 있지 않다면 아래 다운로드 버튼을 눌러 먼저 설치해주세요.
+    </div>
+
+    <div class="btn-group">
+      <button id="btn-retry" class="btn-primary" onclick="triggerProtocol()">
+        🧇 다시 열기 (Open in WaffleCode)
+      </button>
+      <a href="https://github.com/gubin0425a-creator/WaffleCode/raw/main/installer/WaffleCode-Setup-1.0.0.exe" class="btn-secondary">
+        💻 WaffleCode 설치 프로그램 다운로드 (.exe)
+      </a>
+      <a href="https://gubin0425a-creator.github.io/WaffleCode/" class="btn-secondary">
+        🌐 공식 웹사이트로 이동
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const repoUrl = params.get('url') || 'https://github.com/gubin0425a-creator/WaffleCode.git';
+    document.getElementById('repo-url-display').textContent = repoUrl;
+
+    const protocolUrl = 'wafflecode://clone?url=' + encodeURIComponent(repoUrl);
+
+    function triggerProtocol() {
+      window.location.href = protocolUrl;
+    }
+
+    // Auto trigger on page load
+    setTimeout(triggerProtocol, 300);
+  </script>
+</body>
+</html>
