@@ -103,6 +103,8 @@ import { legacySessionHref, requireServerKey, sessionHref } from "@/utils/sessio
 import { useUsageExceededDialogs } from "./session/usage-exceeded-dialogs"
 import { createSessionOwnership } from "./session/session-ownership"
 import { createSessionLineage } from "./session/session-lineage"
+import { GemsSelector } from "@/components/gems-selector"
+import { SessionWorkView } from "@/pages/session/work-view"
 
 type FollowupItem = FollowupDraft & { id: string }
 type FollowupEdit = Pick<FollowupItem, "id" | "prompt" | "context">
@@ -375,6 +377,7 @@ export default function Page() {
   const reviewFile = () => view().review.file()
   const sessionOwnership = createSessionOwnership(sessionKey)
   const newSessionDesign = createMemo(() => settings.general.newLayoutDesigns())
+  const [sessionMode, setSessionMode] = createSignal<"chat" | "work">("chat")
 
   createEffect(() => {
     if (!prompt.ready()) return
@@ -2064,6 +2067,39 @@ export default function Page() {
       <Show when={!isDesktop() && !!params.id && settings.general.newLayoutDesigns() && !mobileTabsBottom()}>
         {mobileTabs(true)}
       </Show>
+      {/* ── Codex-style Work vs Chat Tabs & Gems Selector ── */}
+      <Show when={!!params.id}>
+        <div class="px-3 py-1.5 border-b border-border-weak-base bg-surface-base/80 backdrop-blur flex items-center justify-between gap-2 shrink-0 z-10">
+          <div class="inline-flex items-center p-0.5 rounded-lg bg-surface-muted border border-border-weak-base text-xs">
+            <button
+              type="button"
+              onClick={() => setSessionMode("chat")}
+              class="px-3 py-1 rounded-md font-medium transition-all flex items-center gap-1.5"
+              classList={{
+                "bg-surface-raised text-text-strong shadow-sm font-semibold": sessionMode() === "chat",
+                "text-text-weak hover:text-text-base": sessionMode() !== "chat",
+              }}
+            >
+              <span>💬</span>
+              <span>챗 (Chat)</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setSessionMode("work")}
+              class="px-3 py-1 rounded-md font-medium transition-all flex items-center gap-1.5"
+              classList={{
+                "bg-surface-raised text-text-strong shadow-sm font-semibold": sessionMode() === "work",
+                "text-text-weak hover:text-text-base": sessionMode() !== "work",
+              }}
+            >
+              <span>⚡</span>
+              <span>워크 (Work)</span>
+            </button>
+          </div>
+
+          <GemsSelector />
+        </div>
+      </Show>
       <div class="flex-1 min-h-0 overflow-hidden">
         <Switch>
           <Match when={params.id && mobileChanges()}>
@@ -2081,46 +2117,69 @@ export default function Page() {
             </div>
           </Match>
           <Match when={params.id}>
-            <Show when={messagesReady() ? params.id : undefined} keyed>
-              {(_id) => (
-                <MessageTimeline
-                  actions={actions}
-                  scroll={ui.scroll}
-                  onResumeScroll={resumeScroll}
-                  setScrollRef={setScrollRef}
-                  onScheduleScrollState={scheduleScrollState}
-                  onAutoScrollHandleScroll={autoScroll.handleScroll}
-                  onMarkScrollGesture={markScrollGesture}
-                  hasScrollGesture={hasScrollGesture}
-                  onUserScroll={markUserScroll}
-                  onHistoryScroll={onHistoryScroll}
-                  onAutoScrollInteraction={autoScroll.handleInteraction}
-                  shouldAnchorBottom={() =>
-                    !location.hash && !store.messageId && !ui.pendingMessage && !autoScroll.userScrolled()
-                  }
-                  centered={centered()}
-                  setContentRef={(el) => {
-                    content = el
-                    autoScroll.contentRef(el)
-
-                    const root = scroller
-                    if (root) scheduleScrollState(root)
+            <Switch>
+              <Match when={sessionMode() === "work"}>
+                <SessionWorkView
+                  diffs={reviewDiffs}
+                  onOpenPreview={() => {
+                    if (isDesktop()) {
+                      if (!view().reviewPanel.opened()) view().reviewPanel.open()
+                    } else {
+                      setStore("mobileTab", "session")
+                    }
                   }}
-                  userMessages={visibleUserMessages()}
-                  setHistoryAnchor={(handlers) => {
-                    captureHistoryAnchor = handlers.capture
-                    restoreHistoryAnchor = handlers.restore
-                  }}
-                  anchor={anchor}
-                  setRevealMessage={(fn) => {
-                    revealMessage = fn
-                  }}
-                  setScrollToEnd={(fn) => {
-                    scrollToEnd = fn
+                  onOpenReview={() => {
+                    if (isDesktop()) {
+                      if (!view().reviewPanel.opened()) view().reviewPanel.open()
+                    } else {
+                      setStore("mobileTab", "changes")
+                    }
                   }}
                 />
-              )}
-            </Show>
+              </Match>
+              <Match when={true}>
+                <Show when={messagesReady() ? params.id : undefined} keyed>
+                  {(_id) => (
+                    <MessageTimeline
+                      actions={actions}
+                      scroll={ui.scroll}
+                      onResumeScroll={resumeScroll}
+                      setScrollRef={setScrollRef}
+                      onScheduleScrollState={scheduleScrollState}
+                      onAutoScrollHandleScroll={autoScroll.handleScroll}
+                      onMarkScrollGesture={markScrollGesture}
+                      hasScrollGesture={hasScrollGesture}
+                      onUserScroll={markUserScroll}
+                      onHistoryScroll={onHistoryScroll}
+                      onAutoScrollInteraction={autoScroll.handleInteraction}
+                      shouldAnchorBottom={() =>
+                        !location.hash && !store.messageId && !ui.pendingMessage && !autoScroll.userScrolled()
+                      }
+                      centered={centered()}
+                      setContentRef={(el) => {
+                        content = el
+                        autoScroll.contentRef(el)
+
+                        const root = scroller
+                        if (root) scheduleScrollState(root)
+                      }}
+                      userMessages={visibleUserMessages()}
+                      setHistoryAnchor={(handlers) => {
+                        captureHistoryAnchor = handlers.capture
+                        restoreHistoryAnchor = handlers.restore
+                      }}
+                      anchor={anchor}
+                      setRevealMessage={(fn) => {
+                        revealMessage = fn
+                      }}
+                      setScrollToEnd={(fn) => {
+                        scrollToEnd = fn
+                      }}
+                    />
+                  )}
+                </Show>
+              </Match>
+            </Switch>
           </Match>
           <Match when={true}>
             <NewSessionView worktree={newSessionWorktree()} />
