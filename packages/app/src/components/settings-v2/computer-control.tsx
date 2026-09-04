@@ -21,15 +21,37 @@ export const SettingsComputerControl: Component = () => {
   return (
     <div class="flex flex-col gap-6 p-6 max-w-2xl text-zinc-100 overflow-y-auto">
       {/* Header */}
-      <div>
-        <h2 class="text-lg font-bold flex items-center gap-2">
-          <span>🖥️ 컴퓨터 원격 조작 & 자율 권한 설정</span>
-          <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-            Active
-          </span>
-        </h2>
-        <p class="text-xs text-zinc-400 mt-1 leading-relaxed">
-          AI 에이전트가 사용자를 대신하여 컴퓨터를 직접 조작하고, 원격 브라우저나 외부 기기에서 WaffleCode를 제어할 수 있는 권한을 설정합니다.
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <h2 class="text-lg font-bold flex items-center gap-2">
+            <span>🖥️ 컴퓨터 원격 조작 & 자율 권한 설정</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              Active
+            </span>
+          </h2>
+          <p class="text-xs text-zinc-400 mt-1 leading-relaxed">
+            AI 에이전트가 사용자를 대신하여 컴퓨터를 직접 조작하고, 원격 브라우저나 외부 기기에서 WaffleCode를 제어할 수 있는 권한을 설정합니다.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new CustomEvent("waffle:open-onboarding"))}
+          class="h-8 px-3.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-bold flex items-center gap-1.5 transition-all shrink-0"
+        >
+          <span>🔄</span>
+          <span>초기 설정 마법사 다시 시작</span>
+        </button>
+      </div>
+
+      {/* ⚠️ 법적 책임 부인 및 면책 고지 배너 */}
+      <div class="p-4 rounded-2xl border border-red-500/40 bg-red-950/20 text-xs text-zinc-300 space-y-2">
+        <div class="font-bold text-red-400 flex items-center gap-1.5 text-xs">
+          <span>⚠️</span>
+          <span>법적 책임 부인 및 완전 면책 고지 (Limitation of Liability)</span>
+        </div>
+        <p class="text-[11px] leading-relaxed text-zinc-300">
+          <strong>개발자 및 기여자는 본 프로그램(WaffleCode)의 사용, 실행, 자율 조작 또는 원격 제어로 인해 발생하는 그 어떠한 직·간접적 손해, 데이터 유실, 시스템 고장, 과금, 보안 사고 및 제3자 피해에 대해서도 어떠한 이유나 명목으로도 일체의 책임을 지지 않습니다.</strong> 모든 권한 부여와 코드/명령어 실행에 따른 결과는 전적으로 사용자 본인의 책임입니다.
         </p>
       </div>
 

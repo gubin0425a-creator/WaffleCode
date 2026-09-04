@@ -66,6 +66,15 @@ export const SessionWorkView: Component<SessionWorkViewProps> = (props) => {
         </div>
 
         <div class="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("waffle:open-onboarding"))}
+            class="h-8 px-3 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-semibold flex items-center gap-1.5 transition-all"
+            title="초기 설정 마법사 다시 시작"
+          >
+            <span>🔄</span>
+            <span>설정 마법사</span>
+          </button>
           <Show when={props.onOpenPreview}>
             <button
               type="button"
