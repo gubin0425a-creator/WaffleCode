@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="packages/app/public/waffle-icon.png" width="140" alt="WaffleCode Logo" />
+</p>
+
 # 🧇 WaffleCode (와플코드)
 
 > **바삭하게 구워내는 AI 코딩 에이전트 & 실시간 스튜디오 프리뷰**  
